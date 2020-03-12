@@ -1,7 +1,7 @@
 import json
 import pandas as pd
 from api import getRouteNames, getRouteAndStops
-from data import routeIdList, routesAndStops, oneRouteManyStops, oneStopManyRoutes
+from data import routeIdList, routesAndStops, oneRouteManyStops, oneStopManyRoutes, createRouteGraph
 from calculations import calculateAndPrintMinMax
 
 # Perform API request for MBTA Routes of type 0,1
@@ -23,7 +23,9 @@ combined_stops = oneStopManyRoutes(stopList)
 
 hubs = combined_stops[combined_stops['uroutes'].apply(lambda x: len(x) > 1)]
 print("Stops associated with more than one route:")
+hubs.set_index('stop_id', inplace=True, drop=True)
 print(hubs)
-    
-    
-           
+
+# create route graph to be used to find shortest path
+route_graph = createRouteGraph(combined_routes, hubs)
+print(route_graph)     

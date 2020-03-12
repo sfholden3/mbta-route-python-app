@@ -78,4 +78,28 @@ def oneStopManyRoutes(stopList):
     combined_stops['routes'] = combined_stops['route_id'].apply(lambda x: x.split(', '))
     combined_stops['uroutes'] = combined_stops['routes'].apply(lambda x: list(set(x)))
     return combined_stops[['stop_id', 'uroutes']]
+
+
+def createRouteGraph(combined_routes, hubs):
+    hubs_dict = hubs.to_dict()['uroutes']
+
+    route_df = combined_routes[['route_id', 'ustops']]
+    route_df.set_index('route_id', inplace=True, drop=True)
+    route_dict = route_df.to_dict()['ustops']
+
+    route_to_route = {}
+    for route in route_dict:
+        other = []
+        stops = route_dict[route]
+        # loop through all stops for a given route
+        for stp in stops:
+            # if the stop is a hub, then we want to add the routes to the current route's 'other'
+            if stp in hubs_dict.keys():
+                #loop through the routes associated with a stop
+                for rt in hubs_dict[stp]:
+                    #if we haven't already added this route to our 'other' list, then add it
+                    if rt not in other and rt != route:
+                        other.append(rt)
+        route_to_route[route] = other
+    return(route_to_route)
     
