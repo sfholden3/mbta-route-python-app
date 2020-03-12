@@ -1,14 +1,11 @@
 # PROOF OF CONCEPT borrowed from https://www.youtube.com/watch?v=IG1QioWSXRI&feature=youtu.be
-sample_graph = {'green': ['red'], 'red': ['orange', 'green'], 'blue': ['orange'], 'orange': ['red', 'blue' ]}
-
-stop1 = 'blue'
-stop2 = 'green'
+# we're weighting all routes the same 
 weight = 1
 
 def getShortestPath(graph,start,goal):
     shortest_distance = {}
     pre = {}
-    unseenNodes = sample_graph
+    unseenNodes = graph
     inf = 999999999
     path = []
     for node in unseenNodes:
@@ -36,8 +33,6 @@ def getShortestPath(graph,start,goal):
         except KeyError:
             print("path not reachable")
             break
+    path.insert(0, start)
     if shortest_distance[goal] != inf:
-        print(path)
-        print(shortest_distance[goal])
-
-getShortestPath(sample_graph,stop1,stop2)
+        return path, shortest_distance[goal]

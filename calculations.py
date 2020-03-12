@@ -9,5 +9,8 @@ def calculateAndPrintMinMax(combined_routes):
     print('\n')
 
 
-#def linesRequired(stop_from, stop_to, combined_stops):
+def linesRequired(route_graph, stop_from, stop_to):
+    #Dijkstra Algorithm
+    #check neighboring nodes for shortest path
+    
     

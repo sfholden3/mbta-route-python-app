@@ -102,4 +102,8 @@ def createRouteGraph(combined_routes, hubs):
                         other.append(rt)
         route_to_route[route] = other
     return(route_to_route)
-    
+
+def getAssociatedRoutesPerStop(stop, stop_dict):
+    if stop in stop_dict.keys():
+        return stop_dict[stop]
+    return []
