@@ -7,7 +7,7 @@ from calculations import calculateAndPrintMinMax, routesRequired
 
 # Get list of stops to request
 
-# get more information about a particular stop
+# TODO get more information about a particular stop
 
 # route graph (key to see if it's returning the correct results)
 
@@ -35,7 +35,7 @@ def info(argv):
         combined_stops.set_index('stop_id', inplace=True)
         stop_dict = combined_stops.to_dict()['uroutes']
         print("Stop Ids: ")
-        print(stop_dict.keys())
+        print(stop_dict)
     if showGraph:
         routeIds = routeIdList()
 

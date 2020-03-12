@@ -8,6 +8,10 @@ python info.py -s
 You can get a connected dictionary between the routes utilized in Dijkstra's by running the following command:
 python info.py -g
 
+# Approach to Question III
+Optimization based on minimizing route swiching. If can get to destination by riding on two routes instead of three, then will select the two routes. Utilizing Dijkstra's algorithm to calculate the shortest path between routes. 
+![Approach](./images/algorithm.png)
+
 # Assumptions - Route Finding
 1. Shuttle routes are not included. These include the Alewife-Harvard shuttle that is included in the "shape" api request that is associated with the redline during construction. 
 2. Despite variations within a route, all stops are combined and associated with a route. For example, there are both Braintree-Alewife and Ashmont-Alewife trains on the red line routes. This solution associates all of those stops with the red route despite the Braintree/Ashmont variations. 
