@@ -5,6 +5,8 @@ python main.py -s <startStop> -e <endStop>
 where, 
 <startStop> and <endStop> are the stop ids from the "shape" data from the MBTA API. You can get a list of the stop ids by runnining the following:
 python info.py -s
+You can get a connected dictionary between the routes utilized in Dijkstra's by running the following command:
+python info.py -g
 
 # Assumptions - Route Finding
 1. Shuttle routes are not included. These include the Alewife-Harvard shuttle that is included in the "shape" api request that is associated with the redline during construction. 
