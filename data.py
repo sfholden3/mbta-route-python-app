@@ -107,3 +107,23 @@ def getAssociatedRoutesPerStop(stop, stop_dict):
     if stop in stop_dict.keys():
         return stop_dict[stop]
     return []
+
+
+def convertStopToRoutes(combined_stops, startStop, endStop):
+    print('\n')
+    print("ROUTE:")
+    combined_stops.set_index('stop_id', inplace=True)
+    stop_dict = combined_stops.to_dict()['uroutes']
+    #print(stop_dict.keys())
+    start_route = getAssociatedRoutesPerStop(startStop, stop_dict)
+    end_route = getAssociatedRoutesPerStop(endStop, stop_dict)
+    print("Routes associated with starting stop "+startStop+":")
+    print(start_route)
+    print("Routes associated with ending stop "+endStop+":")
+    print(end_route)
+    
+    print("Routes to take between "+startStop+" and "+endStop+":")
+    if len(start_route) < 1 or len(end_route) < 1:
+        print("ERROR: invalid stop")
+        sys.exit(2)
+    return start_route, end_route
