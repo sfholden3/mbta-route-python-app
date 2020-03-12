@@ -1,14 +1,15 @@
 # Getting started
 System requirements can be found in requirements.txt. 
-1. Run the following command to answer the three questions from the document
-python main.py -s <startStop> -e <endStop>
+* Run the following command to answer the three questions from the document:
+`python main.py -s <startStop> -e <endStop>`
 where, 
-<startStop> and <endStop> are the stop ids from the "shape" data from the MBTA API. You can get a list of the stop ids by runnining the following:
-python info.py -s
-You can get a connected dictionary between the routes utilized in Dijkstra's by running the following command:
-python info.py -g
+<startStop> and <endStop> are the stop ids from the "shape" data from the MBTA API.
+* Retrieve a list of the stop ids by runnining the following:
+`python info.py -s`
+* Retrieve a dictionary between the routes utilized in solving for the shortest path by running the following command:
+`python info.py -g`
 
-# Approach to Question III
+# Finding Required Routes between two stops
 Optimization based on minimizing route swiching. If can get to destination by riding on two routes instead of three, then will select the two routes. Utilizing Dijkstra's algorithm to calculate the shortest path between routes. 
 ![Approach](./images/algorithm.png)
 
