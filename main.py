@@ -2,8 +2,7 @@ import json
 import pandas as pd
 from api import getRouteNames, getRouteAndStops
 from data import routeIdList, routesAndStops, oneRouteManyStops, oneStopManyRoutes, createRouteGraph, getAssociatedRoutesPerStop
-from calculations import calculateAndPrintMinMax
-from graph import getShortestPath
+from calculations import calculateAndPrintMinMax, routesRequired
 import sys, getopt
 
 # Accepting arguments for stops to determine routes
@@ -72,7 +71,7 @@ def main(argv):
         print(' OR '.join(intersection_routes))
         sys.exit(2)
     if len(start_route) == 1 and len(end_route) == 1:
-        path, shortest_distance = getShortestPath(route_graph, start_route[0], end_route[0])
+        path, shortest_distance = routesRequired(route_graph, start_route[0], end_route[0])
         print(path)
         print(shortest_distance)
 
