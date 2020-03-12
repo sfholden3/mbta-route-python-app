@@ -9,6 +9,14 @@ where,
 * Retrieve a dictionary between the routes utilized in solving for the shortest path by running the following command:
 `python info.py -g`
 
+# Data Gathering/Shaping
+* Utilized the API endpoints and documentation made available by the MBTA: https://api-v3.mbta.com/docs/swagger/index.html
+* Gathered the relevant route ids that were listed as type 0 and 1 (light and heavy rail). 
+* Used the route ids to then gather the route/stop relationships from the "shape" dataset. 
+* From the "shape" dataset, I created two dataframes. By having a dataset with the stop as a key and another as the route as a key, I was able to quickly query either for the stop or the route and get the associated information. 
+1. Stop Id -> list of associated routes
+2. Route Id -> list of associated stops
+
 # Finding Required Routes between two stops
 Optimization based on minimizing route swiching. If can get to destination by riding on two routes instead of three, then will select the two routes. Utilizing Dijkstra's algorithm to calculate the shortest path between routes. 
 ![Approach](./images/algorithm.png)
