@@ -7,3 +7,7 @@ def calculateAndPrintMinMax(combined_routes):
     print("Min Stops:")
     print(min[['route_id', 'ustops_cnt']])
     print('\n')
+
+
+#def linesRequired(stop_from, stop_to, combined_stops):
+    

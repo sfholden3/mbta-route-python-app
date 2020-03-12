@@ -12,7 +12,7 @@ def getRouteNames():
 
     
 shape_arg = '/shapes?filter[route]='
-include_arg = '&include=stops'
+include_arg = '&include=stops&sort=direction_id'
 def getRouteAndStops(routes):
     api_url = api_url_base+shape_arg+routes+include_arg
     resp = requests.get(api_url, headers=headers)
