@@ -3,7 +3,7 @@ System requirements can be found in requirements.txt.
 * Run the following command to answer the three questions from the document:
 `python main.py -s <startStop> -e <endStop>`
 where, 
-<startStop> and <endStop> are the stop ids from the "shape" data from the MBTA API.
+startStop and endStop are the stop ids from the "shape" data from the MBTA API.
 * Retrieve a list of the stop ids by runnining the following:
 `python info.py -s`
 * Retrieve a dictionary between the routes utilized in solving for the shortest path by running the following command:
